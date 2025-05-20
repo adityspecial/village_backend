@@ -30,6 +30,9 @@ app.use(bodyParser.json());
 // API routes for Razorpay integration
 
 // Create subscription
+app.get("/", (req, res) => {
+  res.send("Hello from Railway backend!");
+});
 app.post("/api/create-subscription", async (req, res) => {
   try {
     const { plan_id, customer_details } = req.body;
@@ -279,7 +282,6 @@ app.use((err, req, res, next) => {
 });
 const PORT = process.env.PORT || 3000;
 
-app.listen(PORT, (err) => {
-  if (err) throw err;
-  console.log(`> Server ready on http://localhost:${PORT}`);
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`Server ready on http://0.0.0.0:${PORT}`);
 });
